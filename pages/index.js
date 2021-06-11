@@ -16,6 +16,18 @@ function Sessions({sessions}) {
     );
 }
 
+function SpeakerImage({id, first, last}) {
+    return (
+        <div
+            className="speaker-img d-flex flex-row justify-content-center align-items-center h-300">
+            <img className="contain-fit"
+                 src={`/images/speaker-${id}.jpg`}
+                 width="300"
+                 alt={`${first} ${last}`}/>
+        </div>
+    );
+}
+
 const IndexPage = () => {
 
     return (
@@ -26,13 +38,7 @@ const IndexPage = () => {
                     return (
                         <div key={id} className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
                             <div className="card card-height p-4 mt-4">
-                                <div
-                                    className="speaker-img d-flex flex-row justify-content-center align-items-center h-300">
-                                    <img className="contain-fit"
-                                         src={`/images/speaker-${id}.jpg`}
-                                         width="300"
-                                         alt={`${first} ${last}`}/>
-                                </div>
+                                <SpeakerImage id={id} first={first} last={last}/>
                                 <div className="speaker-info">
                                     <div className="d-flex justify-content-between mb-3">
                                         <h3 className="text-truncate w-200">
