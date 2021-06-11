@@ -8,6 +8,14 @@ function Session({title, room}) {
     );
 }
 
+function Sessions({sessions}) {
+    return (
+        <div className="sessionBox card h-250">
+            <Session title={sessions[0].title} room={sessions[0].room.name}/>
+        </div>
+    );
+}
+
 const IndexPage = () => {
 
     return (
@@ -35,9 +43,7 @@ const IndexPage = () => {
                                         <p>{bio} {company} {favorite}</p>
                                     </div>
                                 </div>
-                                <div className="sessionBox card h-250">
-                                    <Session title={sessions[0].title} room={sessions[0].room.name}/>
-                                </div>
+                                <Sessions sessions={sessions} />
                             </div>
                         </div>
                     )
