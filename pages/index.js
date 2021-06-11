@@ -28,30 +28,41 @@ function SpeakerImage({id, first, last}) {
     );
 }
 
+function SpeakerDemographics({first, last, bio, company, favorite}) {
+    return (
+        <div className="speaker-info">
+            <div className="d-flex justify-content-between mb-3">
+                <h3 className="text-truncate w-200">
+                    {first} {last}
+                </h3>
+            </div>
+            <div>
+                <p>{bio} {company} {favorite}</p>
+            </div>
+        </div>
+    );
+}
+
+function Speaker({speaker}) {
+    const {id, first, last, sessions} = speaker;
+    return (
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
+            <div className="card card-height p-4 mt-4">
+                <SpeakerImage id={id} first={first} last={last}/>
+                <SpeakerDemographics {...speaker} />
+            </div>
+            <Sessions sessions={sessions}/>
+        </div>
+    );
+}
 const IndexPage = () => {
 
     return (
         <div className="container speakers-list">
             <div className="row">
                 {data.map(function (speaker) {
-                    const {id, bio, first, last, favorite, twitterHandle, company, sessions} = speaker
                     return (
-                        <div key={id} className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
-                            <div className="card card-height p-4 mt-4">
-                                <SpeakerImage id={id} first={first} last={last}/>
-                                <div className="speaker-info">
-                                    <div className="d-flex justify-content-between mb-3">
-                                        <h3 className="text-truncate w-200">
-                                            {first} {last}
-                                        </h3>
-                                    </div>
-                                    <div>
-                                        <p>{bio} {company} {favorite}</p>
-                                    </div>
-                                </div>
-                                <Sessions sessions={sessions}/>
-                            </div>
-                        </div>
+                        <Speaker key={speaker.id} speaker={speaker} />
                     )
                 })}
             </div>
