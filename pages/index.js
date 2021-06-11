@@ -1,4 +1,5 @@
 import {data} from "../SpeakerData";
+import Speaker from "../src/components/Speaker";
 
 
 const IndexPage = () => {
